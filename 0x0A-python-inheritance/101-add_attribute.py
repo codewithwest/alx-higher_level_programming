@@ -1,15 +1,27 @@
 #!/usr/bin/python3
 
-"""
-The 101
-"""
+"""Defines a function that adds attributes to objects."""
 
-def add_attribute(*args):
+def add_attribute(obj, att, value):
     
-    if "main" in str(type(args[0])):
-        
-        setattr(args[0], args[1], args[2])
-        
-    else:
+    """Add a new attribute to an object if possible.
+
+    Args:
+
+        obj (any): The object to add an attribute to.
+
+        att (str): The name of the attribute to add to obj.
+
+        value (any): The value of att.
+
+    Raises:
+
+        TypeError: If the attribute cannot be added.
+
+    """
+    
+    if not hasattr(obj, "__dict__"):
         
         raise TypeError("can't add new attribute")
+    
+    setattr(obj, att, value)
